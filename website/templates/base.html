@@ -69,11 +69,10 @@
           </ul>
       </li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="navbar-right">
-        <a href="https://devcenter.heroku.com"><span class="glyphicon glyphicon-book"></span> Heroku Dev Center</a>
-      </li>
-    </ul>
+    <div class="nav navbar-nav pull-right">
+      <a class="btn btn-info navbar-btn btn-sm" href="{% url 'account_signup' %}">Get Started</a>
+      <a class="btn btn-default navbar-btn btn-sm" href="{% url 'account_login' %}">Sign In</a>
+    </div>
   </div>
 </nav>
 
