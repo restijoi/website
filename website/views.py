@@ -4,6 +4,7 @@ from django.views.generic import DetailView
 from django.contrib.auth import get_user_model
 from django.shortcuts import redirect
 from django.http import Http404
+from django.contrib import messages
 
 
 
