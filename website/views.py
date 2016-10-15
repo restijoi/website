@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import redirect
 from django.http import Http404
 from django.contrib import messages
-
+from website.models import Project
 
 
 def index(request):
@@ -39,3 +39,19 @@ class UserProfileDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(UserProfileDetailView, self).get_context_data(**kwargs)
         return context
+
+
+
+class ProjectDetailView(DetailView):
+    model = Project
+    slug_field = "slug"
+    template_name = "project.html"
+
+    def get(self, request, *args, **kwargs):
+        try:
+            self.object = self.get_object()
+        except Http404:
+            messages.error(self.request, 'That project was not found.')
+            return redirect("/")
+        return super(ProjectDetailView, self).get(request, *args, **kwargs)
+

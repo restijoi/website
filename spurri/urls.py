@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from website.views import UserProfileDetailView
+from website.views import UserProfileDetailView, ProjectDetailView
 from django.contrib import admin
 admin.autodiscover()
 
@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^profile/$', website.views.profile, name='profile'),
     url(r'^profile/(?P<slug>[^/]+)/$', UserProfileDetailView.as_view(), name="profile"),
+    url(r'^(?P<slug>[^/]+)/$', ProjectDetailView.as_view(), name="project"),
 ]
