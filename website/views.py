@@ -75,6 +75,7 @@ class ProjectCreate(CreateView):
     def form_valid(self, form):
         obj = form.save(commit=False)
         obj.user = self.request.user
+        obj.save()
         messages.success(self.request, 'Project added!')
         return HttpResponseRedirect("/"+obj.slug) 
 
