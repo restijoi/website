@@ -7,13 +7,13 @@
 <div class="container-fluid">
  <!--   Project   -->
   <div class="row">
-    <div class="col-md-6">
-      <img src="http://placehold.it/640x480" class="img-rounded" width="640px";height"480px">
+    <div class="col-md-6" style="height:480px; overflow:hidden;">
+      <img src="{{MEDIA_ROOT}}{{object.image.url}}" class="img-rounded" width="640px";>
     </div>
     <div class="col-md-6">
-      <h2 class="text-center">Operation: {{project}}</h2>
+      <h2 class="text-center">{{object.name}}</h2>
       <br>
-      <h2 class="text-center"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.{{description}}<h2>
+      <h2 class="text-center"> {{object.description}}<h2>
         <div class="col-md-6">
           <ul class="icons list-unstyled list-inline list-center">
            <li><a href="https://www.github.com" style="icon-decoration: none"><i class="fa fa-github" align="middle"></i></a></li>
