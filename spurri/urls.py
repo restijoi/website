@@ -2,6 +2,8 @@ from django.conf.urls import include, url
 from website.views import UserProfileDetailView, ProjectCreate, ProjectDetailView
 from django.contrib import admin
 admin.autodiscover()
+from django.conf import settings
+from django.conf.urls.static import static
 
 import website.views
 
@@ -17,4 +19,7 @@ urlpatterns = [
     url(r'^create/$', ProjectCreate.as_view(), name="create"),
     url(r'^profile/(?P<slug>[^/]+)/$', UserProfileDetailView.as_view(), name="profile"),
     url(r'^(?P<slug>[^/]+)/$', ProjectDetailView.as_view(), name="project"),
+    
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

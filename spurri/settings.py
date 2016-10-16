@@ -133,7 +133,7 @@ if 'DATABASE_URL' in os.environ:
     GS_BUCKET_NAME = 'spurrifiles'
     DEFAULT_FILE_STORAGE = 'storages.backends.gs.GSBotoStorage'
     GS_QUERYSTRING_AUTH = False
-    MEDIA_URL="https://spurrifiles.storage.googleapis.com/"
+    #MEDIA_URL="https://spurrifiles.storage.googleapis.com/"
 
 # local dev needs to set SMTP backend or fail at startup
 if DEBUG:
