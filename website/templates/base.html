@@ -58,7 +58,7 @@
 		text-align: center;
 		margin-bottom: 30px;
 	}
-	
+
 	.project:hover {
 		background-color: #eef7fa;
 		font-weight: bold;
@@ -67,7 +67,7 @@
 	body {
 		margin-bottom: 40px;
 	}
-	
+
 	.glyphicon {
 		font-size: 25px;
 	}
@@ -85,28 +85,27 @@
         <a href="/create">Add a Project</a>
       </li>
       <li>
-<<<<<<< Updated upstream
         <a href="#" title="coming soon" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Start a Challenge</a>
-  
-      </li>
-    </ul>
-    <div class="nav navbar-nav pull-right">
-    {% if user.is_authenticated %}
-      <a class="btn btn-info navbar-btn btn-sm" href="{% url 'account_logout' %}">Logout</a>  
-      {% else %} 
-       <a class="btn btn-info navbar-btn btn-sm" href="{% url 'account_signup' %}">Get Started</a>   
-       <a class="btn btn-default navbar-btn btn-sm" href="{% url 'account_login' %}">Sign In</a>   
-       {% endif %} 
-=======
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Create A Project</a>
 
       </li>
     </ul>
     <div class="nav navbar-nav pull-right">
+    {% if user.is_authenticated %}
+      <a class="btn btn-info navbar-btn btn-sm" href="{% url 'account_logout' %}">Logout</a>
+      {% else %}
        <a class="btn btn-info navbar-btn btn-sm" href="{% url 'account_signup' %}">Get Started</a>
        <a class="btn btn-default navbar-btn btn-sm" href="{% url 'account_login' %}">Sign In</a>
->>>>>>> Stashed changes
+       {% endif %}
+      <!--  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Create A Project</a> -->
+
+      </li>
+    </ul>
+    <!--
+    <div class="nav navbar-nav pull-right">
+       <a class="btn btn-info navbar-btn btn-sm" href="{% url 'account_signup' %}">Get Started</a>
+       <a class="btn btn-default navbar-btn btn-sm" href="{% url 'account_login' %}">Sign In</a>
      </div>
+   -->
   </div>
 </nav>
 
