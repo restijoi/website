@@ -4,6 +4,7 @@ Django==1.9.2
 django-allauth==0.28.0
 django-bootstrap3==7.1.0
 django-storages==1.5.1
+django-updown==1.0.1
 gunicorn==19.4.5
 oauthlib==2.0.0
 Pillow==3.4.1

@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 admin.autodiscover()
 from django.conf import settings
+from updown.views import AddRatingFromModel
 from django.conf.urls.static import static
 
 import website.views
@@ -20,7 +21,11 @@ urlpatterns = [
     url(r'^create/$', login_required(ProjectCreate.as_view()), name="create"),
     url(r'^profile/(?P<slug>[^/]+)/$', UserProfileDetailView.as_view(), name="profile"),
     url(r'^(?P<slug>[^/]+)/$', ProjectDetailView.as_view(), name="project"),
-    
+    url(r"^project/(?P<object_id>\d+)/rate/(?P<score>[\d\-]+)$", AddRatingFromModel(), {
+        'app_label': 'website',
+        'model': 'Project',
+        'field_name': 'rating',
+    }, name="project_rating"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

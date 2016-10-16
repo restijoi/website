@@ -25,8 +25,10 @@
 					<img src="{{MEDIA_ROOT}}{{project.image.url}}"  width="200px" ></img>
 						<div class="row">
 							<div class="col-md-6">
+							<a href="project/{{project.id}}/rate/1">
 								<span class="glyphicon glyphicon-triangle-top vote1" aria-hidden="true"></span>
-								<p id="vote_count" style="font-size: 18px; margin-top: -10px;">0</p>
+								<p id="vote_count" style="font-size: 18px; margin-top: -10px;">{{project.rating.likes }}</p>
+								</a>
 							</div>
 							<div class="col-md-6">
 								<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>

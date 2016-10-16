@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'updown',
     #'allauth.socialaccount.providers.linkedin',
     #'allauth.socialaccount.providers.google',
     #'allauth.socialaccount.providers.facebook',
