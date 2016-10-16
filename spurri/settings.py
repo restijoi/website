@@ -128,12 +128,12 @@ if 'DATABASE_URL' in os.environ:
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
 
-    # GS_ACCESS_KEY_ID = os.environ.get('GS_ACCESS_KEY_ID', 'blank')
-    # GS_SECRET_ACCESS_KEY = os.environ.get('GS_SECRET_ACCESS_KEY', 'blank')
-    # GS_BUCKET_NAME = 'spurrifiles'
-    # DEFAULT_FILE_STORAGE = 'storages.backends.gs.GSBotoStorage'
-    # GS_QUERYSTRING_AUTH = False
-    # MEDIA_URL="https://spurrifiles.storage.googleapis.com/"
+    GS_ACCESS_KEY_ID = os.environ.get('GS_ACCESS_KEY_ID', 'blank')
+    GS_SECRET_ACCESS_KEY = os.environ.get('GS_SECRET_ACCESS_KEY', 'blank')
+    GS_BUCKET_NAME = 'spurrifiles'
+    DEFAULT_FILE_STORAGE = 'storages.backends.gs.GSBotoStorage'
+    GS_QUERYSTRING_AUTH = False
+    #MEDIA_URL="https://spurrifiles.storage.googleapis.com/"
 
 # local dev needs to set SMTP backend or fail at startup
 if DEBUG:
