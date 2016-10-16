@@ -1,21 +1,24 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% load humanize %}
+{% load gravatar %}
 {% block content %}
+
 
 <div class="container-fluid">
 		<h1 class="text-center">{{object.username}}{{object.firstname}}{{object.lastname}}</h1>
 		
 		<div class="row">
 			<div class="col-md-4">
-				<img class="img-rounded center-block" src="{% static 'project.jpg' %}"></img>
+				<img class="img-rounded center-block" src="{% gravatar_url  object 300 %} " ></img>
 				<p class="text-center">New York, New York</p>
 			    <p class="text-center"><a href="www.mywebsite.com">www.mywebsite.com</a></p>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4"><!--
 				<div class="well well-header">
 					<p class="text-center" style="font-size: 18px;">I like my code shaken, not stirred.</p>
 				</div>
+				-->
 				<hr>
 				<p class="profile">Last seen {{object.last_login|naturaltime}}.</p>
 				<p class="profile">{{object.project_set.all|length}} open project{{object.project_set.all|pluralize}}</p>
@@ -43,12 +46,13 @@
 			<div class="col-md-7 col-md-offset-1">
 				<h2 class="display-2 text-center">Projects</h2>
 					<ul class="list-unstyled">
+					{% for project in object.project_set.all %}
 						<li>
 							<div class="col-md-6">
 								<div class="well well-project">
-									<img src="{% static 'project.jpg' %}" height="200px" width="300px" class="img-rounded center-block">
-									<h4 class="text-center">Project Name</h4>
-									<p>Project description.</p>
+									<img src="{{MEDIA_ROOT}}{{project.image.url}}" height="200px" width="300px" class="img-rounded center-block">
+									<h4 class="text-center">{{project.name}}</h4>
+									<p>{{project.description}}</p>
 									<p><strong>Money funded:</strong>  $4,748</p>
 									<p class="text-center"><strong>60%</strong></p>
 										<div class="progress">
@@ -56,27 +60,12 @@
 												60%
 											  </div>
 										</div>
-									<a class="btn btn-success btn-center" href="#">Learn More</a>
+									<a class="btn btn-success btn-center" href="/{{project.slug}}">Learn More</a>
 								</div>
 							</div>
 						</li>
-						<li>
-							<div class="col-md-6">
-								<div class="well well-project">
-									<img src="{% static 'project.jpg' %}" height="200px" width="300px" class="img-rounded center-block">
-									<h4 class="text-center">Project Name</h4>
-									<p>Project description.</p>
-									<p><strong>Money funded:</strong>  $4,748</p>
-									<p class="text-center"><strong>%48</strong></p>
-										<div class="progress">
-											  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-												48%
-											  </div>
-										</div>
-									<a class="btn btn-success btn-center" href="#">Learn More</a>
-								</div>
-							</div>
-						</li>
+						{% endfor %}
+						
 					</ul>
 			</div>
 			

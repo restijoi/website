@@ -3,6 +3,7 @@ dj-database-url==0.4.0
 Django==1.9.2
 django-allauth==0.28.0
 django-bootstrap3==7.1.0
+django-gravatar2==1.4.0
 django-storages==1.5.1
 django-updown==1.0.1
 gunicorn==19.4.5
