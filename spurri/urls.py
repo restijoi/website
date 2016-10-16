@@ -1,6 +1,7 @@
 from django.conf.urls import include, url
 from website.views import UserProfileDetailView, ProjectCreate, ProjectDetailView
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
 admin.autodiscover()
 from django.conf import settings
 from django.conf.urls.static import static
@@ -16,7 +17,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^profile/$', website.views.profile, name='profile'),
-    url(r'^create/$', ProjectCreate.as_view(), name="create"),
+    url(r'^create/$', login_required(ProjectCreate.as_view()), name="create"),
     url(r'^profile/(?P<slug>[^/]+)/$', UserProfileDetailView.as_view(), name="profile"),
     url(r'^(?P<slug>[^/]+)/$', ProjectDetailView.as_view(), name="project"),
     

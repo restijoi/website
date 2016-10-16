@@ -6,13 +6,13 @@
 <div class="jumbotron text-center">
   <div class="container">
     <h1>Crowdsourced Innovation For Disaster Relief</h1>
-    <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-python">Create A Project</a>
-    <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/python-getting-started">Find Your Invention</a>
+    <a type="button" class="btn btn-lg btn-default" href="/create">Add a Project</a>
+    <a type="button" class="btn btn-lg btn-primary" href="#" title="coming soon">Start a Challenge</a>
   </div>
 </div>
 <div class="container-fluid">
   <div class="row">
-	 <h2 class="display-2 text-center">Spurri is an open source platform that connects innovators with government agencies on terms they love.</h2>
+	 <h2 class="display-2 text-center">Spurri is a platform that connects innovators with government agencies on terms they love.</h2>
   </div>
   <hr>
 		<h3 class="display-3 text-center">Inventions On Display</h3>
@@ -35,7 +35,7 @@
 					<h4>{{ project.name }}</h4>
 					<!-- <p class="text-center"><strong>Category:</strong> Drones</p> -->
 					<p>{{ project.description }}</p>
-					<a href="#" class="btn-center btn btn-success">Learn More</a>
+					<a href="/{{ project.slug }}" class="btn-center btn btn-success">Learn More</a>
 				</div>
 			</div>
 		</li>

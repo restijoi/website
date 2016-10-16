@@ -10,9 +10,9 @@
 </head>
 <div class="row">
   <div class="medium-6 columns">
-    <!-- this is where the image of the project will go -->
+    <!-- this is where the image of the project will go put the large image for now -->
     <p></p>
-    <img class="thumbnail" src="#">
+    <img class="thumbnail" src="{{MEDIA_ROOT}}{{object.image.url}}">
     <div class="row small-up-4">
       <div class="column">
         <img class="thumbnail" src="#">
@@ -29,8 +29,8 @@
     </div>
   </div>
   <div class="medium-6 large-5 columns">
-    <h3>{{project}}</h3>
-    <p>{{description}}</p>
+    <h3>{{object.name}}</h3>
+    <p>{{object.description}}</p>
 
 
     <a href="#" class="button large expanded">Fund Project</a>

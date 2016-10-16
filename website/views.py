@@ -8,6 +8,7 @@ from django.shortcuts import redirect
 from django.http import Http404
 from django.contrib import messages
 from website.models import Project
+from django.http import HttpResponseRedirect
 
 
 def index(request):
@@ -72,12 +73,11 @@ class ProjectCreate(CreateView):
     template_name = "add_project.html"
 
     def form_valid(self, form):
-        messages.success(self.request, 'Project added! +'+ str(score))
+        obj = form.save(commit=False)
+        obj.user = self.request.user
+        messages.success(self.request, 'Project added!')
         return HttpResponseRedirect("/"+obj.slug) 
 
     # def get_context_data(self, **kwargs):
-    #     context = super(IssueCreate, self).get_context_data(**kwargs)
-    #     context[''] = Action.objects.all()[0:10]
-    #     context['hunts'] = Hunt.objects.exclude(plan="Free")[:4]
-    #     context['leaderboard'] = User.objects.annotate(total_score=Sum('points__score')).order_by('-total_score').filter(total_score__gt=0)
+    #     context = super(ProjectCreate, self).get_context_data(**kwargs)
     #     return context
