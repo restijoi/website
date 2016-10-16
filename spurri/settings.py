@@ -6,6 +6,8 @@ import dj_database_url
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
+MEDIA_ROOT = "media"
+MEDIA_URL = '/media/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -125,6 +127,13 @@ if 'DATABASE_URL' in os.environ:
     EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_PASSWORD', 'blank')
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
+
+    GS_ACCESS_KEY_ID = os.environ.get('GS_ACCESS_KEY_ID', 'blank')
+    GS_SECRET_ACCESS_KEY = os.environ.get('GS_SECRET_ACCESS_KEY', 'blank')
+    GS_BUCKET_NAME = 'spurrifiles'
+    DEFAULT_FILE_STORAGE = 'storages.backends.gs.GSBotoStorage'
+    GS_QUERYSTRING_AUTH = False
+    MEDIA_URL="https://spurrifiles.storage.googleapis.com/"
 
 # local dev needs to set SMTP backend or fail at startup
 if DEBUG:
