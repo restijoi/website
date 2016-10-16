@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from website.views import UserProfileDetailView, ProjectCreate, ProjectDetailView
+from website.views import UserProfileDetailView, ProjectCreate, ProjectDetailView, AddRating
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 admin.autodiscover()
@@ -18,14 +18,11 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^profile/$', website.views.profile, name='profile'),
+    url(r'^like_button/$', AddRating.as_view(), name='like_button'),
     url(r'^create/$', login_required(ProjectCreate.as_view()), name="create"),
     url(r'^profile/(?P<slug>[^/]+)/$', UserProfileDetailView.as_view(), name="profile"),
     url(r'^(?P<slug>[^/]+)/$', ProjectDetailView.as_view(), name="project"),
-    url(r"^project/(?P<object_id>\d+)/rate/(?P<score>[\d\-]+)$", AddRatingFromModel(), {
-        'app_label': 'website',
-        'model': 'Project',
-        'field_name': 'rating',
-    }, name="project_rating"),
+    url(r"^project/(?P<object_id>\d+)/rate/(?P<score>[\d\-]+)$", AddRating.as_view(), name="project_rating"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

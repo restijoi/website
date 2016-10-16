@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import DetailView, CreateView
+from django.views.generic import DetailView, CreateView, View
 from django.contrib.auth import get_user_model
 from django.shortcuts import redirect, render_to_response, RequestContext
 from django.contrib.auth import get_user_model
@@ -9,11 +9,10 @@ from django.http import Http404
 from django.contrib.auth.models import User
 from django.contrib import messages
 from website.models import Project
-from django.http import HttpResponseRedirect, HttpResponseNotFound
+from django.http import HttpResponseRedirect, HttpResponseNotFound, HttpResponse
+from updown.views import AddRatingFromModel
+import json
 
-
-def index(request):
-    return render(request, 'index.html')
 
 def index(request, template="index.html"):
     context = {
@@ -29,6 +28,26 @@ def profile(request):
         return redirect('/profile/' + request.user.username)
     except Exception:
         return redirect('/')
+
+class AddRating(View):
+  
+    def post(self, request, *args, **kwargs):
+        params = {
+            'app_label': 'website',
+            'model': 'project',
+            'field_name': 'rating'
+        }
+        params.update(kwargs)
+        response = AddRatingFromModel()(request, **params)
+        print response 
+        if response.status_code == 200:
+
+            return HttpResponse(Project.objects.get(id=kwargs['object_id']).rating.likes)
+        return HttpResponse(json.dumps({'error': 9, 'message': response.content}))
+  
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
+
 
 
 class UserProfileDetailView(DetailView):

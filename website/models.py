@@ -12,7 +12,7 @@ class Greeting(models.Model):
 class Project(models.Model):
     user = models.ForeignKey(User)
     name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True)
     description = models.TextField()
     rating = RatingField(can_change_vote=True)
     image = models.ImageField(upload_to="images")
