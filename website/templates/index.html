@@ -5,14 +5,17 @@
 
 <div class="jumbotron text-center">
   <div class="container">
+  <img src="{% static 'logo.png' %}">
     <h1>Crowdsourced Innovation</br> For Disaster Relief</h1>
     <a type="button" class="btn btn-lg btn-default" href="/create">Add a Project</a>
     <a type="button" class="btn btn-lg btn-primary" href="#" title="coming soon">Start a Challenge</a>
   </div>
+   <h2 style="color:black;"> {{projects|length}} projects | {{user_count}} users</h2>
 </div>
 <div class="container-fluid">
   <div class="row">
 	 <h2 class="display-2 text-center">Spurri is a platform that connects innovators with government agencies on terms they love.</h2>
+
   </div>
   <hr>
 		<h3 class="display-3 text-center">Inventions On Display</h3>
@@ -21,6 +24,7 @@
 	  {% for project in projects %}
 		<li>
 			<div class="col-md-4 col-xs-6 text-center">
+			<a href="/{{ project.slug }}" >
 				<div class="project" >
 				<div style="height:175px; overflow:hidden;">
 					<img src="{{MEDIA_ROOT}}{{project.image.url}}"  width="200px" ></img>
@@ -38,11 +42,12 @@
 						</div>
 					<h4>{{ project.name }}</h4>
 					<!-- <p class="text-center"><strong>Category:</strong> Drones</p> -->
-					<div style="height:50px">
+					<div style="height:50px; overflow:hidden;">
 					<p>{{ project.description }}</p>
 					</div>
 					<a href="/{{ project.slug }}" class="btn-center btn btn-success">Learn More</a>
 				</div>
+				</a>
 			</div>
 		</li>
 		{% endfor %}

@@ -35,6 +35,7 @@ INSTALLED_APPS = (
     'allauth.account',
     'allauth.socialaccount',
     'updown',
+    'django.contrib.humanize',
     #'allauth.socialaccount.providers.linkedin',
     #'allauth.socialaccount.providers.google',
     #'allauth.socialaccount.providers.facebook',

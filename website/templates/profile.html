@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load humanize %}
 {% block content %}
 
 <div class="container-fluid">
-		<h1 class="text-center">{{object.firstname}}{{object.lastname}}</h1>
+		<h1 class="text-center">{{object.username}}{{object.firstname}}{{object.lastname}}</h1>
 		
 		<div class="row">
 			<div class="col-md-4">
@@ -16,8 +17,8 @@
 					<p class="text-center" style="font-size: 18px;">I like my code shaken, not stirred.</p>
 				</div>
 				<hr>
-				<p class="profile">Last seen 11 days ago.</p>
-				<p class="profile">3 open projects</p>
+				<p class="profile">Last seen {{object.last_login|naturaltime}}.</p>
+				<p class="profile">{{object.project_set.all|length}} open project{{object.project_set.all|pluralize}}</p>
 				<p class="profile">$3,746 raised</p>
 				<ul class="list-unstyled list-inline">
 					<li><i class="fa fa-github fa-3x" aria-hidden="true"></i></li>

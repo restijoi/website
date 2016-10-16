@@ -6,9 +6,10 @@ from django.shortcuts import redirect, render_to_response, RequestContext
 from django.contrib.auth import get_user_model
 from django.shortcuts import redirect
 from django.http import Http404
+from django.contrib.auth.models import User
 from django.contrib import messages
 from website.models import Project
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 
 
 def index(request):
@@ -17,6 +18,7 @@ def index(request):
 def index(request, template="index.html"):
     context = {
         'projects': Project.objects.all()[0:9],
+        'user_count': User.objects.all().count(),
     }
     return render_to_response(template, context, context_instance=RequestContext(request))
 
@@ -61,8 +63,7 @@ class ProjectDetailView(DetailView):
         try:
             self.object = self.get_object()
         except Http404:
-            messages.error(self.request, 'That project was not found.')
-            return redirect("/")
+           return HttpResponseNotFound('<h1>Page not found</h1>')
         return super(ProjectDetailView, self).get(request, *args, **kwargs)
 
 
