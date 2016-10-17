@@ -4,18 +4,14 @@
 	<div class="jumbotron text-center">
 		<div class="container">
 			<img src="{% static 'logo.png' %}">
-			<h1>Crowdsourced Innovation</br> For Disaster Relief</h1>
+			<h1>Crowdsourced Innovation</h1>
+			<h2 class="display-2 text-center">Connecting innovators with government agencies on terms they love.</h2>
 			<a type="button" class="btn btn-lg btn-default" href="/create">Add a Project</a>
 			<a type="button" class="btn btn-lg btn-primary" href="#" title="coming soon">Start a Challenge</a>
 		</div>
-		<h2 style="color:white;"> {{projects|length}} projects | {{user_count}} users</h2>
+		<h2 style="color:blue;"> {{projects|length}} projects | {{user_count}} users</h2>
 	</div>
 	<div class="container-fluid">
-		<div class="row">
-			<h2 class="display-2 text-center">Spurri is a platform that connects innovators with government agencies on terms they love.</h2>
-		</div>
-		<hr>
-		<h3 class="display-3 text-center">Inventions On Display</h3>
 		<div class="row">
 			<ul class="list-unstyled">
 				{% for project in projects %}
