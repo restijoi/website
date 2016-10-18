@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 from django.http import Http404
 from django.contrib.auth.models import User
 from django.contrib import messages
-from website.models import Project
+from website.models import Project, Team
 from django.http import HttpResponseRedirect, HttpResponseNotFound, HttpResponse
 from updown.views import AddRatingFromModel
 import json

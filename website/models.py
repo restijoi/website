@@ -16,3 +16,25 @@ class Project(models.Model):
     paypal =models.EmailField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+
+
+    def __unicode__(self):
+        return self.name;
+
+
+class Team(models.Model):
+    project = models.ForeignKey(Project)
+    user = models.ForeignKey(User)
+    role = models.CharField(max_length=200)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+#class Grants(models.Model):
+
+# grant progress...
+
+#class Service(models.Model):
+#    name = models.CharField(max_length=200)
+#    slug = models.SlugField(max_length=200, unique=True)
+
+
