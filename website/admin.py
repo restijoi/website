@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name','description','created','modified')
+    list_display = ('name','slug','description','created','rating','public_views','private_views','funding','goal','paypal','created','modified')
+
 
 
 admin.site.unregister(User)
