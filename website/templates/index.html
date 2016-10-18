@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load comments %}
 {% block content %}
 	<div class="jumbotron text-center">
 		<div class="container">
@@ -35,6 +36,8 @@
 										</div>
 										<div class="col-md-6">
 											<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+											{% get_comment_count for project as comment_count %}
+											{{comment_count}}
 										</div>
 									</div>
 									<h4>{{ project.name }}</h4>

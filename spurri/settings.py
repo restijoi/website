@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'updown',
     'django_gravatar',
     'django.contrib.humanize',
+    'django_comments',
     #'allauth.socialaccount.providers.linkedin',
     #'allauth.socialaccount.providers.google',
     #'allauth.socialaccount.providers.facebook',

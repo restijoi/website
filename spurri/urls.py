@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^profile/(?P<slug>[^/]+)/$', UserProfileDetailView.as_view(), name="profile"),
     url(r'^(?P<slug>[^/]+)/$', ProjectDetailView.as_view(), name="project"),
     url(r"^project/(?P<object_id>\d+)/rate/(?P<score>[\d\-]+)$", AddRating.as_view(), name="project_rating"),
+    url(r'^comments/', include('django_comments.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
