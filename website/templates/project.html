@@ -96,9 +96,9 @@
         Category</br>
         <span >broad category of impact</span>
       </td>
-      <td>{% for tag in object.tags %}
-        {{tag}}{% if not forloop.last %}, {% endif %}
-      {% endfor %}
+      <td>
+        {{object.tags}}
+     
     </td>
   </tr>
   <tr>

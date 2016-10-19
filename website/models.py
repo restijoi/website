@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from updown.fields import RatingField
 from tagging.registry import register
+from tagging.fields import TagField
 
 class Project(models.Model):
     user = models.ForeignKey(User)
@@ -10,6 +11,7 @@ class Project(models.Model):
     description = models.TextField()
     problem = models.CharField(max_length=255, null=True, blank=True)
     rating = RatingField(can_change_vote=True)
+    tags = TagField()
     image = models.ImageField(upload_to="images")
     public_views = models.IntegerField(default=0)
     private_views = models.IntegerField(default=0)
@@ -23,7 +25,7 @@ class Project(models.Model):
     def __unicode__(self):
         return self.name;
 
-register(Project)
+#register(Project)
 
 class Team(models.Model):
     project = models.ForeignKey(Project)
