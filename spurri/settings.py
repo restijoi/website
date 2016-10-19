@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django_gravatar',
     'django.contrib.humanize',
     'django_comments',
+    'tagging',
     #'allauth.socialaccount.providers.linkedin',
     #'allauth.socialaccount.providers.google',
     #'allauth.socialaccount.providers.facebook',
