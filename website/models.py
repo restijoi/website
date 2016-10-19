@@ -9,7 +9,7 @@ class Project(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     description = models.TextField()
-    problem = models.CharField(max_length=255, null=True, blank=True)
+    problem = models.TextField(null=True, blank=True)
     rating = RatingField(can_change_vote=True)
     tags = TagField()
     image = models.ImageField(upload_to="images")
